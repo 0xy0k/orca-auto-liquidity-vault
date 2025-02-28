@@ -133,7 +133,7 @@ describe("Vault Tests", () => {
     let tokenADecimal: number;
     let tokenBDecimal: number;
 
-    if (tokenSolMint.toBase58() > tokenUSDCMint.toBase58()) {
+    if (tokenSolMint.toBuffer().compare(tokenUSDCMint.toBuffer()) < 0) {
       tokenAMint = tokenSolMint;
       tokenBMint = tokenUSDCMint;
       adminTokenAAccount = adminSolAccount;
@@ -282,7 +282,7 @@ describe("Vault Tests", () => {
     const depositUSDCAmount = 10000000; // 10 USDC
     let depositTokenAAmount = 0;
     let depositTokenBAmount = 0;
-    if (tokenSolMint.toBase58() > tokenUSDCMint.toBase58()) {
+    if (tokenSolMint.toBuffer().compare(tokenUSDCMint.toBuffer()) < 0) {
       depositTokenAAmount = depositSolAmount;
       depositTokenBAmount = depositUSDCAmount;
     } else {
